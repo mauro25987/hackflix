@@ -1,5 +1,5 @@
-import { useFetchMovies } from '@/app/hooks/useFetch'
-import { PosterSizes } from '@/app/lib/definitions'
+import type { PosterSizes } from '@/app/lib/definitions'
+import { fetchMovies } from '@/app/lib/fetchmovie'
 import { fetchConfigImages } from '@/app/lib/image'
 import Image from 'next/image'
 
@@ -9,7 +9,7 @@ type MovieListProps = {
 }
 
 export default async function MovieList({ title, path }: MovieListProps) {
-  const data = await useFetchMovies({ path })
+  const data = await fetchMovies({ path })
   const { secure_base_url } = await fetchConfigImages()
   // const imgSize: BackdropSizes = 'original'
   const imgSize: PosterSizes = 'w342'

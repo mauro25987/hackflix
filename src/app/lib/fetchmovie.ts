@@ -3,7 +3,7 @@ import { Movie } from '@/app/lib/definitions'
 
 const { apiSecret, apiUrl } = config
 
-export const useFetchMovies = async ({ path }: { path: string }): Promise<Movie[]> => {
+export const fetchMovies = async ({ path }: { path: string }): Promise<Movie[]> => {
   const options = {
     method: 'GET',
     headers: {
