@@ -12,7 +12,9 @@ export default async function Home() {
   return (
     <div>
       <h1 className="m-15 text-center text-4xl font-bold">Hola Hackflix</h1>
-      <InputSearch />
+      <Suspense fallback={<div>Espero el input</div>}>
+        <InputSearch />
+      </Suspense>
       {movies.map(({ title, path }) => (
         <Suspense fallback={<div>Cargando</div>} key={title}>
           <MovieList title={title} path={path} />
