@@ -1,6 +1,9 @@
 import MovieList from '@/app/ui/home/movie'
 import InputSearch from '@/app/ui/input-search'
 import { Suspense } from 'react'
+import { fetchMovieFind } from './lib/fetchmovie'
+
+type ParamsProps = { searchParams: Promise<{ search: string }> }
 
 const movies = [
   { title: 'Now Playing', path: 'now_playing' },
@@ -8,10 +11,18 @@ const movies = [
   { title: 'Top Rated', path: 'top_rated' },
   { title: 'Upcoming', path: 'upcoming' },
 ]
-export default async function Home() {
+
+export default async function Home({ searchParams }: ParamsProps) {
+  const { search } = await searchParams
+  if (search) {
+    const searchMovie = await fetchMovieFind({ search })
+    console.log(searchMovie)
+  } else {
+    console.log('no hay resultados')
+  }
+
   return (
     <div>
-      <h1 className="m-15 text-center text-4xl font-bold">Hola Hackflix</h1>
       <Suspense fallback={<div>Espero el input</div>}>
         <InputSearch />
       </Suspense>

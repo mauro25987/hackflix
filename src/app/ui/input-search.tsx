@@ -8,15 +8,10 @@ export default function InputSearch() {
 
   const handleSearch = (term: string) => {
     const params = new URLSearchParams(searchParams)
-
-    if (term) {
-      params.set('search', term)
-    } else {
-      params.delete('search')
-    }
-
+    term ? params.set('search', term) : params.delete('search')
     replace(`${pathname}?${params.toString()}`)
   }
+
   return (
     <div className="text-center">
       <label htmlFor="search">Buscador: </label>
