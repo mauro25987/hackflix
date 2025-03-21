@@ -1,6 +1,8 @@
 import { fetchMovieDetail } from '@/app/lib/fetchmovie'
 
-export default async function MoviePage({ params }: { params: Promise<{ id: string }> }) {
+type Params = Promise<{ id: string }>
+
+export default async function MoviePage({ params }: { params: Params }) {
   const { id } = await params
   const movie = await fetchMovieDetail({ movieId: id })
   console.log(movie)
