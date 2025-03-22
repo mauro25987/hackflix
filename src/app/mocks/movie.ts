@@ -1,6 +1,6 @@
 import { Movie } from '@/app/lib/definitions'
 
-const movieResult: Movie[] = [
+export const movieResult: Movie[] = [
   {
     adult: false,
     backdrop_path: null,
