@@ -7,13 +7,13 @@ export default function InputSearch() {
   const { replace } = useRouter()
 
   const handleSearch = (term: string) => {
-    const params = new URLSearchParams(searchParams)
+    const query = new URLSearchParams(searchParams)
     if (term) {
-      params.set('search', term)
+      query.set('search', term)
     } else {
-      params.delete('search')
+      query.delete('search')
     }
-    replace(`${pathname}?${params.toString()}`)
+    replace(`${pathname}?${query.toString()}`)
   }
 
   return (

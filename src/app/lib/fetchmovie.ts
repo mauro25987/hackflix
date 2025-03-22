@@ -22,7 +22,7 @@ export const fetchMovieDetail = async ({ movieId }: { movieId: string }) => {
   return data.json()
 }
 
-export const fetchMovieFind = async ({ search }: { search: string }) => {
+export const fetchMovieFind = async ({ search }: { search: string }): Promise<Movie[]> => {
   const response = await fetch(
     `${apiUrl}/search/movie?query=${search}&include_adult=false&language=en-US&page=1`,
     options
