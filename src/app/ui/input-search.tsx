@@ -1,12 +1,14 @@
 'use client'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useDebouncedCallback } from 'use-debounce'
 
 export default function InputSearch() {
   const searchParams = useSearchParams()
   const pathname = usePathname()
   const { replace } = useRouter()
 
-  const handleSearch = (term: string) => {
+  const handleSearch = useDebouncedCallback((term: string) => {
+    console.log(term)
     const query = new URLSearchParams(searchParams)
     if (term) {
       query.set('search', term)
@@ -14,7 +16,7 @@ export default function InputSearch() {
       query.delete('search')
     }
     replace(`${pathname}?${query.toString()}`)
-  }
+  }, 300)
 
   return (
     <div className="text-center">

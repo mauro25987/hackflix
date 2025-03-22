@@ -1,7 +1,7 @@
+import { fetchMovieFind } from '@/app/lib/fetchmovie'
 import MovieList from '@/app/ui/home/movie-list'
 import InputSearch from '@/app/ui/input-search'
 import { Suspense } from 'react'
-import { fetchMovieFind } from './lib/fetchmovie'
 
 type ParamsProps = { searchParams: Promise<{ search?: string }> }
 
@@ -13,7 +13,7 @@ const movies = [
 ]
 
 export default async function Home({ searchParams }: ParamsProps) {
-  const { search = '' } = await searchParams
+  const search = (await searchParams)?.search || ''
   const searchQuery = search.trim() !== ''
   const hasSearchResults = searchQuery ? await fetchMovieFind({ search }) : []
 
