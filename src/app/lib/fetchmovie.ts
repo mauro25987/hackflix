@@ -24,10 +24,10 @@ export const fetchMovies = async ({
 }
 
 export const fetchMovieDetail = async ({
-  type,
+  type = 'movie',
   movieId,
 }: {
-  type: MovieType
+  type?: MovieType
   movieId: string
 }): Promise<Movie> => {
   const data = await fetch(`${apiUrl}/${type}/${movieId}?language=en-US`, options)
