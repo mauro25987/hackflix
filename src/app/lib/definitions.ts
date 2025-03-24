@@ -1,3 +1,10 @@
+export type MovieType = 'movie' | 'tv'
+export interface MovieProps {
+  title: string
+  path: string
+  type: MovieType
+}
+
 export type Movie = {
   id: number
   title: string
